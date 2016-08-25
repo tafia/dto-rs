@@ -12,7 +12,7 @@ pub struct AccessTokenDTO {
     pub expiration: i64,
 }
 
-impl DTO for AccessTokenDTO { }
+impl DTO for AccessTokenDTO {}
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, RustcDecodable, RustcEncodable)]
 pub enum TokenTypeDTO {
@@ -25,12 +25,19 @@ impl fmt::Display for TokenTypeDTO {
     }
 }
 
-impl DTO for TokenTypeDTO { }
+impl DTO for TokenTypeDTO {}
 
-pub trait DTO : Encodable + Decodable { }
+pub trait DTO: Encodable + Decodable {}
 
-pub trait FromDTO<D: DTO> : Sized {
+pub trait FromDTO<D: DTO>: Sized {
     fn from_dto(dto: D) -> Result<Self, FromDTOError>;
 }
 
+#[derive(Debug)]
 pub struct FromDTOError;
+
+impl fmt::Display for FromDTOError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{:?}", self)
+    }
+}
