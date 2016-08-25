@@ -1,0 +1,18 @@
+[package]
+name = "fractal-dto"
+version = "0.0.1"
+authors = [
+    "Eric Remigino <eric@fractal.global>",
+    "Iban Eguia <iban@fractal.global>",
+]
+license = "MIT/Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/FractalGlobal/utils-rs"
+documentation = "http://fractal.global/utils-rs"
+description = """
+DTO objects to transfer information in the Fractal Global Credits API.
+"""
+keywords = ["fractal", "global", "credits", "dto"]
+
+[dependencies]
+rustc-serialize = "^0.3"
