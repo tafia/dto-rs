@@ -1,5 +1,6 @@
 extern crate rustc_serialize;
 
+use std::fmt;
 use rustc_serialize::{Encodable, Decodable};
 
 #[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
@@ -18,12 +19,18 @@ pub enum TokenTypeDTO {
     Bearer,
 }
 
+impl fmt::Display for TokenTypeDTO {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{:?}", self)
+    }
+}
+
 impl DTO for TokenTypeDTO { }
 
 pub trait DTO : Encodable + Decodable { }
 
 pub trait FromDTO<D: DTO> : Sized {
-    fn from_dto(dto: &D) -> Result<Self, FromDTOError>;
+    fn from_dto(dto: D) -> Result<Self, FromDTOError>;
 }
 
 pub struct FromDTOError;
