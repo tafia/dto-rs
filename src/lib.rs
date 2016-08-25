@@ -4,12 +4,13 @@ use rustc_serialize::{Encodable, Decodable};
 
 #[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
 pub struct AccessTokenDTO {
-    app_id: String,
-    scopes: String,
-    access_token: String,
-    token_type: TokenTypeDTO,
-    expiration: i64,
+    pub app_id: String,
+    pub scopes: String,
+    pub access_token: String,
+    pub token_type: TokenTypeDTO,
+    pub expiration: i64,
 }
+
 impl DTO for AccessTokenDTO { }
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, RustcDecodable, RustcEncodable)]
