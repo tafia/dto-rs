@@ -25,8 +25,4 @@ pub trait FromDTO<D: DTO> : Sized {
     fn from_dto(dto: &D) -> Result<Self, FromDTOError>;
 }
 
-pub trait IntoDTO<D: DTO> {
-    fn into_dto(&self) -> Result<D, FromDTOError>;
-}
-
 pub struct FromDTOError;
