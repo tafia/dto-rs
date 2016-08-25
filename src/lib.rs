@@ -1,6 +1,7 @@
 extern crate rustc_serialize;
 
 use std::fmt;
+use std::error::Error;
 use rustc_serialize::{Encodable, Decodable};
 
 #[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
@@ -39,5 +40,15 @@ pub struct FromDTOError;
 impl fmt::Display for FromDTOError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "{:?}", self)
+    }
+}
+
+impl Error for FromDTOError {
+    fn description(&self) -> &str {
+        "Something went wrong when converting the DTO to the required type"
+    }
+
+    fn cause(&self) -> Option<&Error> {
+        None
     }
 }
