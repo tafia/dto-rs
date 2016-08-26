@@ -1,6 +1,10 @@
 [package]
 name = "fractal-dto"
+<<<<<<< HEAD
 version = "0.0.8"
+=======
+version = "0.0.9"
+>>>>>>> release/0.0.9
 authors = [
     "Eric Remigino <eric@fractal.global>",
     "Iban Eguia <iban@fractal.global>",
