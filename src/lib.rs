@@ -43,7 +43,6 @@ impl fmt::Display for ScopeDTO {
     }
 }
 
-pub type Result<T> = StdResult<T, Error>;
 
 #[derive(RustcEncodable, RustcDecodable)]
 pub struct LoginDTO {
