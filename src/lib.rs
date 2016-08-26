@@ -4,8 +4,6 @@ extern crate fractal_utils as utils;
 
 use std::fmt;
 use std::str::FromStr;
-use std::result::Result as StdResult;
-use std::error::Error as StdError;
 use std::error::Error;
 use rustc_serialize::{Encodable, Decodable};
 
@@ -43,7 +41,24 @@ impl fmt::Display for ScopeDTO {
     }
 }
 
-pub type Result<T> = StdResult<T, Error>;
+impl FromStr for ScopeDTO {
+     type Err = FromDTOError;
+     fn from_str(s: &str) -> Result<ScopeDTO, FromDTOError> {
+         match s {
+             "Admin" => Ok(ScopeDTO::Admin),
+             "Public" => Ok(ScopeDTO::Public),
+             "Developer" => Ok(ScopeDTO::Developer),
+             s => match s.rfind("User:") {
+                 Some(i) => Ok(ScopeDTO::User(match s[i..].parse() {
+                     Ok(id) => id,
+                     _ => return Err(FromDTOError::new("Invalid Scope")),
+                 })),
+                 _ => Err(FromDTOError::new("Invalid Scope")),
+             },
+         }
+     }
+ }
+
 
 #[derive(RustcEncodable, RustcDecodable)]
 pub struct LoginDTO {
@@ -162,17 +177,28 @@ pub trait FromDTO<D: DTO>: Sized {
 }
 
 #[derive(Debug)]
-pub struct FromDTOError;
+pub struct FromDTOError {
+    error: String,
+}
+
+impl FromDTOError {
+    /// Creates a new FromDTOError
+    fn new<S: AsRef<str>>(error: S) -> FromDTOError {
+        FromDTOError {
+            error: String::from(error.as_ref()),
+        }
+    }
+}
 
 impl fmt::Display for FromDTOError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{:?}", self)
+        write!(f, "{}", self.error)
     }
 }
 
 impl Error for FromDTOError {
     fn description(&self) -> &str {
-        "Something went wrong when converting the DTO to the required type"
+        &self.error
     }
 
     fn cause(&self) -> Option<&Error> {
