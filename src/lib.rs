@@ -13,8 +13,8 @@ use chrono::NaiveDate;
 use utils::{Amount, WalletAddress, Address};
 
 /// Enum that represents
-#[derive(Debug, PartialOrd, PartialEq, Eq, Copy, Clone, RustcDecodable, RustcEncodable)]
-pub enum Scope {
+#[derive(Debug, PartialEq, Eq, Copy, Clone, RustcDecodable, RustcEncodable)]
+pub enum ScopeDTO {
     /// Administration scope
     ///
     /// This scope is used for administration purposes, and will not be enabled for public
@@ -37,31 +37,13 @@ pub enum Scope {
     Developer,
 }
 
-impl fmt::Display for Scope {
+impl fmt::Display for ScopeDTO {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "{:?}", self)
     }
 }
 
 pub type Result<T> = StdResult<T, Error>;
-
-impl FromStr for Scope {
-    type Err = Error;
-    fn from_str(s: &str) -> Result<Scope> {
-        match s {
-            "Admin" => Ok(Scope::Admin),
-            "Public" => Ok(Scope::Public),
-            "Developer" => Ok(Scope::Developer),
-            s => match s.rfind("User:") {
-                Some(i) => Ok(Scope::User(match s[i..].parse() {
-                    Ok(id) => id,
-                    _ => return Err(Error::InvalidScope),
-                })),
-                _ => Err(Error::InvalidScope),
-            },
-        }
-    }
-}
 
 #[derive(RustcEncodable, RustcDecodable)]
 pub struct LoginDTO {
@@ -94,7 +76,7 @@ impl DTO for FractalConnectionDTO {}
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct DeveloperClientDTO {
     pub name: String,
-    pub scopes: Vec<Scope>,
+    pub scopes: Vec<ScopeDTO>,
 }
 
 impl DTO for DeveloperClientDTO {}
