@@ -2,7 +2,7 @@ extern crate rustc_serialize;
 extern crate chrono;
 extern crate fractal_utils as utils;
 
-use std::collections::HashMap;
+use std::collections::{HashMap, BTreeSet};
 use std::fmt;
 use std::str::FromStr;
 use std::error::Error;
@@ -82,7 +82,7 @@ pub struct UserDTO {
     /// The amount of devices the user has
     pub device_count: u8,
     /// The users wallet addresses
-    pub wallet_addresses: Vec<WalletAddress>,
+    pub wallet_addresses: BTreeSet<WalletAddress>,
     /// The users checking balance
     pub checking_balance: Amount,
     /// The users cold balance
