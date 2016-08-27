@@ -41,8 +41,6 @@ impl fmt::Display for ScopeDTO {
     }
 }
 
-<<<<<<< HEAD
-=======
 impl FromStr for ScopeDTO {
      type Err = FromDTOError;
      fn from_str(s: &str) -> Result<ScopeDTO, FromDTOError> {
@@ -60,8 +58,6 @@ impl FromStr for ScopeDTO {
          }
      }
  }
-
->>>>>>> release/0.0.9
 
 #[derive(RustcEncodable, RustcDecodable)]
 pub struct LoginDTO {
