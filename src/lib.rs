@@ -182,7 +182,7 @@ pub struct FromDTOError {
 
 impl FromDTOError {
     /// Creates a new FromDTOError
-    fn new<S: AsRef<str>>(error: S) -> FromDTOError {
+    pub fn new<S: AsRef<str>>(error: S) -> FromDTOError {
         FromDTOError {
             error: String::from(error.as_ref()),
         }
