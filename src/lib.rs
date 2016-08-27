@@ -4,7 +4,6 @@ extern crate fractal_utils as utils;
 
 use std::collections::{HashMap, BTreeSet};
 use std::fmt;
-use std::str::FromStr;
 use std::error::Error;
 use rustc_serialize::{Encodable, Decodable};
 
@@ -42,23 +41,7 @@ impl fmt::Display for ScopeDTO {
     }
 }
 
-impl FromStr for ScopeDTO {
-     type Err = FromDTOError;
-     fn from_str(s: &str) -> Result<ScopeDTO, FromDTOError> {
-         match s {
-             "Admin" => Ok(ScopeDTO::Admin),
-             "Public" => Ok(ScopeDTO::Public),
-             "Developer" => Ok(ScopeDTO::Developer),
-             s => match s.rfind("User:") {
-                 Some(i) => Ok(ScopeDTO::User(match s[i..].parse() {
-                     Ok(id) => id,
-                     _ => return Err(FromDTOError::new("Invalid Scope")),
-                 })),
-                 _ => Err(FromDTOError::new("Invalid Scope")),
-             },
-         }
-     }
- }
+
 
 /// The user date type object
 #[derive(RustcEncodable, RustcDecodable)]
