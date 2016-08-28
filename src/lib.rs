@@ -8,7 +8,7 @@ use std::error::Error;
 use rustc_serialize::{Encodable, Decodable};
 
 use chrono::{NaiveDate, DateTime, UTC};
-use utils::{Amount, WalletAddress, Address};
+use utils::{Amount, WalletAddress, Address, Relationship};
 
 /// Enum that represents
 #[derive(Debug, PartialEq, Eq, Copy, Clone, RustcDecodable, RustcEncodable)]
@@ -130,7 +130,7 @@ pub struct FractalConnectionDTO {
     /// Who the user is trying to connect to
     pub destination_id: u64,
     /// The particulars of there relationship
-    pub relationship: u8,
+    pub relationship: Relationship,
 }
 
 impl DTO for FractalConnectionDTO {}
