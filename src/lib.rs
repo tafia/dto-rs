@@ -159,6 +159,18 @@ pub struct ConfirmPendingConnectionDTO {
 
 impl DTO for ConfirmPendingConnectionDTO {}
 
+/// Struct to a confirm pending connection
+#[derive(Clone, RustcEncodable, RustcDecodable)]
+pub struct ResetPasswordDTO {
+    /// The the username of the user
+    pub username: String,
+    /// Where the email of the user
+    pub email: String,
+}
+
+impl DTO for ResetPasswordDTO {}
+
+
 /// Struct used to update user information
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct UpdateUserDTO {
