@@ -122,7 +122,7 @@ pub struct PublicKeysDTO {
 
 impl DTO for PublicKeysDTO {}
 
-/// Struct for for fractal connection
+/// Struct for a fractal connection
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct FractalConnectionDTO {
     /// Where the connection originated
@@ -159,7 +159,7 @@ pub struct ConfirmPendingConnectionDTO {
 
 impl DTO for ConfirmPendingConnectionDTO {}
 
-/// Struct to a confirm pending connection
+/// Struct to reset the users password
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct ResetPasswordDTO {
     /// The the username of the user
@@ -225,6 +225,16 @@ pub struct RegisterDTO {
 }
 
 impl DTO for RegisterDTO { }
+
+/// Response Data type object
+#[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
+pub struct ResponseDTO {
+    /// The message
+    pub message: String,
+
+}
+
+impl DTO for ResponseDTO { }
 
 /// AccessToken Data type object
 #[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
