@@ -110,7 +110,7 @@ pub struct LoginDTO {
     /// The users password
     pub password: String,
     /// Extends the token time,
-    pub remember_me: Option<bool>,
+    pub remember_me: bool,
 
 }
 
