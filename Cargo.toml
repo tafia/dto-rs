@@ -1,6 +1,6 @@
 [package]
 name = "fractal-dto"
-version = "0.0.19"
+version = "0.0.20"
 authors = [
     "Eric Remigino <eric@fractal.global>",
     "Iban Eguia <iban@fractal.global>",
