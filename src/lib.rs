@@ -105,8 +105,8 @@ impl DTO for UserDTO {}
 /// The login date type object
 #[derive(RustcEncodable, RustcDecodable)]
 pub struct LoginDTO {
-    /// The users username
-    pub username: String,
+    /// The users username or email
+    pub user_email: String,
     /// The users password
     pub password: String,
 }
