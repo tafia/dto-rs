@@ -234,6 +234,20 @@ pub struct ResponseDTO {
 
 }
 
+impl ResponseDTO {
+
+    pub fn new<S: AsRef<str>>(message: S) -> ResponseDTO {
+        ResponseDTO {
+            message: String::from(message.as_ref())
+        }
+    }
+
+    pub fn set_message<S: AsRef<str>>(&mut self, message: S) {
+        self.message = String::from(message.as_ref());
+    }
+
+}
+
 impl DTO for ResponseDTO { }
 
 /// AccessToken Data type object
