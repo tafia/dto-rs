@@ -226,6 +226,16 @@ pub struct RegisterDTO {
 
 impl DTO for RegisterDTO { }
 
+/// Response Data type object
+#[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
+pub struct ResponseDTO {
+    /// The message
+    pub message: String,
+
+}
+
+impl DTO for ResponseDTO { }
+
 /// AccessToken Data type object
 #[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
 pub struct AccessTokenDTO {
