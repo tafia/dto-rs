@@ -109,6 +109,9 @@ pub struct LoginDTO {
     pub user_email: String,
     /// The users password
     pub password: String,
+    /// Extends the token time,
+    pub remember_me: Option<bool>,
+
 }
 
 impl DTO for LoginDTO {}
