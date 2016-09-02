@@ -117,6 +117,15 @@ pub struct LoginDTO {
 
 impl DTO for LoginDTO {}
 
+/// The new password data type object
+#[derive(RustcEncodable, RustcDecodable)]
+pub struct NewPasswordDTO {
+    /// The new password
+    pub new_password: String,
+}
+
+impl DTO for NewPasswordDTO {}
+
 /// Holds both public and signing keys encoded in base64
 #[derive(RustcEncodable, RustcDecodable)]
 pub struct PublicKeysDTO {
