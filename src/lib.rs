@@ -52,7 +52,7 @@ pub struct UserDTO {
     pub username: String,
     /// The users email
     pub email: String,
-    //// Whether the email has been confirmed or not
+    /// / Whether the email has been confirmed or not
     pub email_confirmed: bool,
     /// The users first name
     pub first: Option<String>,
@@ -95,7 +95,7 @@ pub struct UserDTO {
     /// When the user registered
     pub registered: DateTime<UTC>,
     /// The users last activity time
-    pub last_activty: DateTime<UTC>,
+    pub last_activity: DateTime<UTC>,
     /// Whether the user is banned and until when
     pub banned: Option<DateTime<UTC>>,
 }
@@ -111,7 +111,6 @@ pub struct LoginDTO {
     pub password: String,
     /// Extends the token time,
     pub remember_me: bool,
-
 }
 
 impl DTO for LoginDTO {}
@@ -214,7 +213,7 @@ pub struct GenerateTransactionDTO {
     pub amount: Amount,
 }
 
-impl DTO for GenerateTransactionDTO { }
+impl DTO for GenerateTransactionDTO {}
 
 /// Struct for for signup verification
 #[derive(Clone, RustcEncodable, RustcDecodable)]
@@ -227,31 +226,26 @@ pub struct RegisterDTO {
     pub email: String,
 }
 
-impl DTO for RegisterDTO { }
+impl DTO for RegisterDTO {}
 
 /// Response Data type object
 #[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
 pub struct ResponseDTO {
     /// The message
     pub message: String,
-
 }
 
 impl ResponseDTO {
-
     pub fn new<S: AsRef<str>>(message: S) -> ResponseDTO {
-        ResponseDTO {
-            message: String::from(message.as_ref())
-        }
+        ResponseDTO { message: String::from(message.as_ref()) }
     }
 
     pub fn set_message<S: AsRef<str>>(&mut self, message: S) {
         self.message = String::from(message.as_ref());
     }
-
 }
 
-impl DTO for ResponseDTO { }
+impl DTO for ResponseDTO {}
 
 /// AccessToken Data type object
 #[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
@@ -298,9 +292,7 @@ pub struct FromDTOError {
 impl FromDTOError {
     /// Creates a new FromDTOError
     pub fn new<S: AsRef<str>>(error: S) -> FromDTOError {
-        FromDTOError {
-            error: String::from(error.as_ref()),
-        }
+        FromDTOError { error: String::from(error.as_ref()) }
     }
 }
 
