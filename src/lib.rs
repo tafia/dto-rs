@@ -50,6 +50,8 @@ pub struct UserDTO {
     pub id: u64,
     /// The unique username of the user
     pub username: String,
+    /// The display name of the user
+    pub displayname: String,
     /// The users email
     pub email: String,
     /// / Whether the email has been confirmed or not
