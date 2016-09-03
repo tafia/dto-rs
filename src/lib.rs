@@ -41,7 +41,22 @@ impl fmt::Display for ScopeDTO {
     }
 }
 
+/// A blog post data type object
+#[derive(RustcEncodable, RustcDecodable)]
+pub struct BlogPostDTO {
+    /// The id of the blog post
+    pub id: u64,
+    /// The author of the blog post
+    pub author: String,
+    /// The title of the blog post
+    pub title: String,
+    /// The body of the blog post
+    pub body: String,
+    /// The date the blog was posted
+    pub timestamp: DateTime<UTC>,
+}
 
+impl DTO for BlogPostDTO {}
 
 /// The user date type object
 #[derive(RustcEncodable, RustcDecodable)]
