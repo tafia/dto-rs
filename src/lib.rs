@@ -1,3 +1,19 @@
+//! This crate contains the data type objects for Fractal Global. It contains the objects
+//! sent to the fractal api.
+//!
+//!
+//! Using it is as simple as including this in the crate:
+//!
+//! ```
+//! extern crate fractal_dto;
+//! ```
+#![forbid(missing_docs, warnings)]
+#![deny(deprecated, improper_ctypes, non_shorthand_field_patterns, overflowing_literals,
+    plugin_as_library, private_no_mangle_fns, private_no_mangle_statics, stable_features,
+    unconditional_recursion, unknown_lints, unused, unused_allocation, unused_attributes,
+    unused_comparisons, unused_features, unused_parens, while_true)]
+#![warn(trivial_casts, trivial_numeric_casts, unused, unused_extern_crates, unused_import_braces,
+    unused_qualifications, unused_results, variant_size_differences)]
 extern crate rustc_serialize;
 extern crate chrono;
 extern crate fractal_utils as utils;
@@ -41,22 +57,7 @@ impl fmt::Display for ScopeDTO {
     }
 }
 
-/// A blog post data type object
-#[derive(RustcEncodable, RustcDecodable)]
-pub struct BlogPostDTO {
-    /// The id of the blog post
-    pub id: u64,
-    /// The author of the blog post
-    pub author: String,
-    /// The title of the blog post
-    pub title: String,
-    /// The body of the blog post
-    pub body: String,
-    /// The date the blog was posted
-    pub timestamp: DateTime<UTC>,
-}
 
-impl DTO for BlogPostDTO {}
 
 /// The user date type object
 #[derive(RustcEncodable, RustcDecodable)]
@@ -95,7 +96,7 @@ pub struct UserDTO {
     pub birthday_confirmed: bool,
     /// The users phone #
     pub phone: Option<String>,
-    // Whether the users phone ## has been confirmed
+    /// Whether the users phone # has been confirmed
     pub phone_confirmed: bool,
     /// The users profile picture
     pub image: Option<String>,
@@ -144,7 +145,9 @@ impl DTO for NewPasswordDTO {}
 /// Holds both public and signing keys encoded in base64
 #[derive(RustcEncodable, RustcDecodable)]
 pub struct PublicKeysDTO {
+    /// the public ntrumls key in base 64
     pub public_sign_key: String,
+    /// the public ntru key in base 64
     pub public_encrypt_key: String,
 }
 
@@ -262,10 +265,11 @@ pub struct ResponseDTO {
 }
 
 impl ResponseDTO {
+    /// creates a new response dto
     pub fn new<S: AsRef<str>>(message: S) -> ResponseDTO {
         ResponseDTO { message: String::from(message.as_ref()) }
     }
-
+    /// Sets the message of the response
     pub fn set_message<S: AsRef<str>>(&mut self, message: S) {
         self.message = String::from(message.as_ref());
     }
@@ -293,6 +297,7 @@ impl DTO for AccessTokenDTO {}
 /// Token type data type object (currently only using bearer)
 #[derive(Debug, PartialEq, Eq, Copy, Clone, RustcDecodable, RustcEncodable)]
 pub enum TokenTypeDTO {
+    /// oAuth Bearer token type
     Bearer,
 }
 
@@ -304,12 +309,16 @@ impl fmt::Display for TokenTypeDTO {
 
 impl DTO for TokenTypeDTO {}
 
+/// The dto trate to make it Encodeable and Decodable into fractal objects
 pub trait DTO: Encodable + Decodable {}
 
+/// creates an object from a dto
 pub trait FromDTO<D: DTO>: Sized {
+    /// the from dto wrapper
     fn from_dto(dto: D) -> Result<Self, FromDTOError>;
 }
 
+/// From DTO Error
 #[derive(Debug)]
 pub struct FromDTOError {
     error: String,
