@@ -316,6 +316,8 @@ pub struct FriendRequestDTO {
     pub message: String,
 }
 
+impl DTO for FriendRequestDTO {}
+
 /// Struct for signup verification
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct RegisterDTO {
