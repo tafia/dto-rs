@@ -245,6 +245,14 @@ pub struct ResetPasswordDTO {
 
 impl DTO for ResetPasswordDTO {}
 
+/// The 6 digit authentication code struct
+#[derive(Clone, RustcEncodable, RustcDecodable)]
+pub struct AuthenticationCodeDTO {
+    /// The 6 digit authentication code
+    pub code: u32,
+}
+
+impl DTO for AuthenticationCodeDTO {}
 
 /// Struct used to update user information
 #[derive(Clone, RustcEncodable, RustcDecodable)]
