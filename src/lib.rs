@@ -273,7 +273,7 @@ pub struct TransactionDTO {
     /// The destination of the transaction
     pub destination_user: u64,
     /// The destination address of the transaction
-    pub destination: WalletAddress,
+    pub destination_address: WalletAddress,
     /// The amount of the transaction
     pub amount: Amount,
     /// The timestamp of the transaction
