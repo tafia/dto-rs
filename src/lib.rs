@@ -178,16 +178,18 @@ impl DTO for PublicKeysDTO {}
 
 /// Struct for a fractal connection
 #[derive(Clone, RustcEncodable, RustcDecodable)]
-pub struct FractalConnectionDTO {
-    /// Where the connection originated
+pub struct FriendRequestDTO {
+    /// Where the connection originated.
     pub origin_id: u64,
-    /// Who the user is trying to connect to
+    /// Who the user is trying to connect to.
     pub destination_id: u64,
-    /// The particulars of there relationship
+    /// Message for the request.
+    pub message: Option<String>,
+    /// The particulars of there relationship.
     pub relationship: Relationship,
 }
 
-impl DTO for FractalConnectionDTO {}
+impl DTO for FriendRequestDTO {}
 
 /// Struct for creating a fractal developer
 #[derive(Clone, RustcEncodable, RustcDecodable)]
@@ -307,7 +309,7 @@ impl DTO for TransactionDTO {}
 
 /// Struct for friend requests
 #[derive(Clone, RustcEncodable, RustcDecodable)]
-pub struct FriendRequestDTO {
+pub struct PendingFriendRequestDTO {
     /// Connection ID.
     pub connection_id: u64,
     /// Origin user.
@@ -316,7 +318,7 @@ pub struct FriendRequestDTO {
     pub message: Option<String>,
 }
 
-impl DTO for FriendRequestDTO {}
+impl DTO for PendingFriendRequestDTO {}
 
 /// Struct for signup verification
 #[derive(Clone, RustcEncodable, RustcDecodable)]
