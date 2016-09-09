@@ -57,8 +57,6 @@ impl fmt::Display for ScopeDTO {
     }
 }
 
-
-
 /// The user date type object
 #[derive(RustcEncodable, RustcDecodable)]
 pub struct UserDTO {
@@ -175,6 +173,8 @@ pub struct CreateClientDTO {
     pub name: String,
     /// The permissions the client has
     pub scopes: Vec<ScopeDTO>,
+    /// Number of requests per hour that the client will be able to do
+    pub request_limit: usize,
 }
 
 impl DTO for CreateClientDTO {}
