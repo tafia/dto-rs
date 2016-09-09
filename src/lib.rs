@@ -168,16 +168,27 @@ pub struct FractalConnectionDTO {
 
 impl DTO for FractalConnectionDTO {}
 
-/// Struct for for fractal developer client
+/// Struct for creating a fractal developer
 #[derive(Clone, RustcEncodable, RustcDecodable)]
-pub struct DeveloperClientDTO {
+pub struct CreateClientDTO {
     /// The name of the client
     pub name: String,
     /// The permissions the client has
     pub scopes: Vec<ScopeDTO>,
 }
 
-impl DTO for DeveloperClientDTO {}
+impl DTO for CreateClientDTO {}
+
+/// Struct with the developer client information
+#[derive(Clone, RustcEncodable, RustcDecodable)]
+pub struct ClientInfoDTO {
+    /// The name of the client
+    pub id: String,
+    /// The permissions the client has
+    pub secret: String,
+}
+
+impl DTO for ClientInfoDTO {}
 
 /// Struct to a confirm pending connection
 #[derive(Clone, RustcEncodable, RustcDecodable)]
