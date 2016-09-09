@@ -313,7 +313,7 @@ pub struct FriendRequestDTO {
     /// Origin user.
     pub origin_user: ProfileDTO,
     /// Message.
-    pub message: String,
+    pub message: Option<String>,
 }
 
 impl DTO for FriendRequestDTO {}
