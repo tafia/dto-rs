@@ -57,7 +57,28 @@ impl fmt::Display for ScopeDTO {
     }
 }
 
+/// Struct for profiles
+#[derive(Clone, RustcEncodable, RustcDecodable)]
+pub struct ProfileDTO {
+    /// User's ID.
+    pub user_id: u64,
+    /// Display name of the user.
+    pub display_name: String,
+    /// First name of the user.
+    pub first_name: Option<String>,
+    /// Last name of the user.
+    pub last_name: Option<String>,
+    /// Link to the user's profile image.
+    pub image: Option<String>,
+    /// Age of the user.
+    pub age: Option<u8>,
+    /// Address of the user.
+    pub address: Option<String>,
+    /// Trust score of the user.
+    pub trust_score: i8,
+}
 
+impl DTO for ProfileDTO {}
 
 /// The user date type object
 #[derive(RustcEncodable, RustcDecodable)]
@@ -175,6 +196,8 @@ pub struct CreateClientDTO {
     pub name: String,
     /// The permissions the client has
     pub scopes: Vec<ScopeDTO>,
+    /// Number of requests per hour that the client will be able to do
+    pub request_limit: usize,
 }
 
 impl DTO for CreateClientDTO {}
@@ -182,10 +205,16 @@ impl DTO for CreateClientDTO {}
 /// Struct with the developer client information
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct ClientInfoDTO {
-    /// The name of the client
+    /// The ID of the client
     pub id: String,
-    /// The permissions the client has
+    /// The name of the client
+    pub name: String,
+    /// The secret of the client
     pub secret: String,
+    /// The scopes of the client
+    pub scopes: Vec<ScopeDTO>,
+    /// The request limit of the client
+    pub request_limit: usize,
 }
 
 impl DTO for ClientInfoDTO {}
@@ -214,6 +243,14 @@ pub struct ResetPasswordDTO {
 
 impl DTO for ResetPasswordDTO {}
 
+/// The 6 digit authentication code struct
+#[derive(Clone, RustcEncodable, RustcDecodable)]
+pub struct AuthenticationCodeDTO {
+    /// The 6 digit authentication code
+    pub code: u32,
+}
+
+impl DTO for AuthenticationCodeDTO {}
 
 /// Struct used to update user information
 #[derive(Clone, RustcEncodable, RustcDecodable)]
@@ -257,7 +294,39 @@ pub struct GenerateTransactionDTO {
 
 impl DTO for GenerateTransactionDTO {}
 
-/// Struct for for signup verification
+/// Struct for tansactions
+#[derive(Clone, RustcEncodable, RustcDecodable)]
+pub struct TransactionDTO {
+    /// The id of the transaction
+    pub id: u64,
+    /// The origin of the transaction
+    pub origin_user: u64,
+    /// The destination of the transaction
+    pub destination_user: u64,
+    /// The destination address of the transaction
+    pub destination_address: WalletAddress,
+    /// The amount of the transaction
+    pub amount: Amount,
+    /// The timestamp of the transaction
+    pub timestamp: DateTime<UTC>,
+}
+
+impl DTO for TransactionDTO {}
+
+/// Struct for friend requests
+#[derive(Clone, RustcEncodable, RustcDecodable)]
+pub struct FriendRequestDTO {
+    /// Connection ID.
+    pub connection_id: u64,
+    /// Origin user.
+    pub origin_user: ProfileDTO,
+    /// Message.
+    pub message: Option<String>,
+}
+
+impl DTO for FriendRequestDTO {}
+
+/// Struct for signup verification
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct RegisterDTO {
     /// The users username
