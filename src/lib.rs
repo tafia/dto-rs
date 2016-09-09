@@ -182,10 +182,16 @@ impl DTO for CreateClientDTO {}
 /// Struct with the developer client information
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct ClientInfoDTO {
-    /// The name of the client
+    /// The ID of the client
     pub id: String,
-    /// The permissions the client has
+    /// The name of the client
+    pub name: String,
+    /// The secret of the client
     pub secret: String,
+    /// The scopes of the client
+    pub scopes: Vec<ScopeDTO>,
+    /// The request limit of the client
+    pub request_limit: usize,
 }
 
 impl DTO for ClientInfoDTO {}
