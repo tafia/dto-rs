@@ -263,7 +263,26 @@ pub struct GenerateTransactionDTO {
 
 impl DTO for GenerateTransactionDTO {}
 
-/// Struct for for signup verification
+/// Struct for tansactions
+#[derive(Clone, RustcEncodable, RustcDecodable)]
+pub struct TransactionDTO {
+    /// The id of the transaction
+    pub id: u64,
+    /// The origin of the transaction
+    pub origin_user: u64,
+    /// The destination of the transaction
+    pub destination_user: u64,
+    /// The destination address of the transaction
+    pub destination: WalletAddress,
+    /// The amount of the transaction
+    pub amount: Amount,
+    /// The timestamp of the transaction
+    pub timestamp: DateTime<UTC>,
+}
+
+impl DTO for TransactionDTO {}
+
+/// Struct for signup verification
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct RegisterDTO {
     /// The users username
