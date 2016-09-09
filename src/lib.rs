@@ -84,6 +84,8 @@ pub struct UserDTO {
     pub device_count: u8,
     /// The users wallet addresses
     pub wallet_addresses: BTreeSet<WalletAddress>,
+    /// The users pending balance
+    pub pending_balance: Amount,
     /// The users checking balance
     pub checking_balance: Amount,
     /// The users cold balance
