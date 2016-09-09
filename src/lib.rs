@@ -282,6 +282,29 @@ pub struct TransactionDTO {
 
 impl DTO for TransactionDTO {}
 
+/// Struct for profiles
+#[derive(Clone, RustcEncodable, RustcDecodable)]
+pub struct ProfileDTO {
+    /// User's ID.
+    pub user_id: u64,
+    /// Display name of the user.
+    pub display_name: String,
+    /// First name of the user.
+    pub first_name: Option<String>,
+    /// Last name of the user.
+    pub last_name: Option<String>,
+    /// Link to the user's profile image.
+    pub image: Option<String>,
+    /// Age of the user.
+    pub age: Option<u8>,
+    /// Address of the user.
+    pub address: Option<String>,
+    /// Trust score of the user.
+    pub trust_score: i8,
+}
+
+impl DTO for ProfileDTO {}
+
 /// Struct for signup verification
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct RegisterDTO {
