@@ -4,13 +4,6 @@ use std::fmt;
 
 use DTO;
 
-/// Enum that represents a scope.
-pub type Scope = ScopeDTO;
-/// Enum representing token type.
-///
-/// Currently only using bearer.
-pub type TokenType = TokenTypeDTO;
-
 /// AccessToken Data type object
 #[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
 pub struct AccessTokenDTO {

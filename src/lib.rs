@@ -34,23 +34,3 @@ pub trait FromDTO<D: DTO>: Sized {
     /// the from dto wrapper
     fn from_dto(dto: D) -> Result<Self, FromDTOError>;
 }
-
-// /// The new password data type object
-// #[derive(RustcEncodable, RustcDecodable)]
-// pub struct NewPasswordDTO {
-//     /// The new password
-//     pub new_password: String,
-// }
-//
-// impl DTO for NewPasswordDTO {}
-//
-// /// Holds both public and signing keys encoded in base64
-// #[derive(RustcEncodable, RustcDecodable)]
-// pub struct PublicKeysDTO {
-//     /// the public ntrumls key in base 64
-//     pub public_sign_key: String,
-//     /// the public ntru key in base 64
-//     pub public_encrypt_key: String,
-// }
-//
-// impl DTO for PublicKeysDTO {}

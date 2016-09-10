@@ -38,3 +38,12 @@ pub struct ResetPasswordDTO {
 }
 
 impl DTO for ResetPasswordDTO {}
+
+/// The new password data type object
+#[derive(RustcEncodable, RustcDecodable)]
+pub struct NewPasswordDTO {
+    /// The new password
+    pub new_password: String,
+}
+
+impl DTO for NewPasswordDTO {}

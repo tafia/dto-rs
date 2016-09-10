@@ -14,7 +14,7 @@ pub use transactions::*;
 
 use DTO;
 
-/// Response Data type object
+/// Response Data Transfer Object
 #[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
 pub struct ResponseDTO {
     /// The message
@@ -33,3 +33,14 @@ impl ResponseDTO {
 }
 
 impl DTO for ResponseDTO {}
+
+// /// Holds both public and signing keys encoded in base64
+// #[derive(RustcEncodable, RustcDecodable)]
+// pub struct PublicKeysDTO {
+//     /// the public ntrumls key in base 64
+//     pub public_sign_key: String,
+//     /// the public ntru key in base 64
+//     pub public_encrypt_key: String,
+// }
+//
+// impl DTO for PublicKeysDTO {}
