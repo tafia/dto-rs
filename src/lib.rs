@@ -248,6 +248,8 @@ impl DTO for ResetPasswordDTO {}
 pub struct AuthenticationCodeDTO {
     /// The 6 digit authentication code
     pub code: u32,
+    /// The timestamp of when the code was sent
+    pub timestamp: UTC,
 }
 
 impl DTO for AuthenticationCodeDTO {}
