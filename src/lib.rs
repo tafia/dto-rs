@@ -24,7 +24,7 @@ use std::error::Error;
 use rustc_serialize::{Encodable, Decodable};
 
 use chrono::{NaiveDate, DateTime, UTC};
-use utils::{Amount, WalletAddress, Address, Relationship};
+use utils::{Amount, WalletAddress, Address};
 
 /// Enum that represents
 #[derive(Debug, PartialEq, Eq, Copy, Clone, RustcDecodable, RustcEncodable)]
@@ -186,10 +186,25 @@ pub struct FriendRequestDTO {
     /// Message for the request.
     pub message: Option<String>,
     /// The particulars of there relationship.
-    pub relationship: Relationship,
+    pub relationship: RelationshipDTO,
 }
 
 impl DTO for FriendRequestDTO {}
+
+/// Defined relationships
+#[derive(Clone, Copy, Debug, PartialEq, RustcEncodable, RustcDecodable)]
+pub enum RelationshipDTO {
+    /// A stranger to the user
+    Stranger,
+    /// An Acquaintance to the uesr
+    Acquaintance,
+    /// A CoWorker to the user
+    CoWorker,
+    /// A friend to the uesr
+    Friend,
+    /// A Family member to the user
+    Family,
+}
 
 /// Struct for creating a fractal developer
 #[derive(Clone, RustcEncodable, RustcDecodable)]

@@ -17,4 +17,4 @@ keywords = ["fractal", "global", "credits", "dto"]
 [dependencies]
 rustc-serialize = "^0.3"
 chrono = { version = "^0.2", features = ["rustc-serialize"]}
-fractal-utils = "^0.1"
+fractal-utils = "^0.2"
