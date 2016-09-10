@@ -58,7 +58,7 @@ impl fmt::Display for ScopeDTO {
 }
 
 /// Struct for profiles
-#[derive(Clone, RustcEncodable, RustcDecodable)]
+#[derive(Debug, Clone, RustcEncodable, RustcDecodable)]
 pub struct ProfileDTO {
     /// User's ID.
     pub user_id: u64,
