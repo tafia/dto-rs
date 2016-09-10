@@ -3,6 +3,7 @@
 pub mod oauth;
 pub mod public;
 pub mod user;
+pub mod otp;
 pub mod friends;
 pub mod transactions;
 
