@@ -1,3 +1,6 @@
+#![doc(html_logo_url = "http://test.fractal.global/img/logo.svg",
+       html_favicon_url = "http://test.fractal.global/img/favicon32.png",
+       html_root_url = "http://fractal.global/dto-rs/")]
 //! This crate contains the data type objects for Fractal Global. It contains the objects
 //! sent to the fractal api.
 //!
