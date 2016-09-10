@@ -24,7 +24,7 @@ use std::error::Error;
 use rustc_serialize::{Encodable, Decodable};
 
 use chrono::{NaiveDate, DateTime, UTC};
-use utils::{Amount, WalletAddress, Address, Relationship};
+use utils::{Amount, WalletAddress, Address};
 
 /// Enum that represents
 #[derive(Debug, PartialEq, Eq, Copy, Clone, RustcDecodable, RustcEncodable)]
@@ -58,7 +58,7 @@ impl fmt::Display for ScopeDTO {
 }
 
 /// Struct for profiles
-#[derive(Clone, RustcEncodable, RustcDecodable)]
+#[derive(Debug, Clone, RustcEncodable, RustcDecodable)]
 pub struct ProfileDTO {
     /// User's ID.
     pub user_id: u64,
@@ -178,16 +178,33 @@ impl DTO for PublicKeysDTO {}
 
 /// Struct for a fractal connection
 #[derive(Clone, RustcEncodable, RustcDecodable)]
-pub struct FractalConnectionDTO {
-    /// Where the connection originated
+pub struct FriendRequestDTO {
+    /// Where the connection originated.
     pub origin_id: u64,
-    /// Who the user is trying to connect to
+    /// Who the user is trying to connect to.
     pub destination_id: u64,
-    /// The particulars of there relationship
-    pub relationship: Relationship,
+    /// Message for the request.
+    pub message: Option<String>,
+    /// The particulars of there relationship.
+    pub relationship: RelationshipDTO,
 }
 
-impl DTO for FractalConnectionDTO {}
+impl DTO for FriendRequestDTO {}
+
+/// Defined relationships
+#[derive(Clone, Copy, Debug, PartialEq, RustcEncodable, RustcDecodable)]
+pub enum RelationshipDTO {
+    /// A stranger to the user
+    Stranger,
+    /// An Acquaintance to the uesr
+    Acquaintance,
+    /// A CoWorker to the user
+    CoWorker,
+    /// A friend to the uesr
+    Friend,
+    /// A Family member to the user
+    Family,
+}
 
 /// Struct for creating a fractal developer
 #[derive(Clone, RustcEncodable, RustcDecodable)]
@@ -248,6 +265,8 @@ impl DTO for ResetPasswordDTO {}
 pub struct AuthenticationCodeDTO {
     /// The 6 digit authentication code
     pub code: u32,
+    /// The timestamp of when the code was sent
+    pub timestamp: UTC,
 }
 
 impl DTO for AuthenticationCodeDTO {}
@@ -315,7 +334,7 @@ impl DTO for TransactionDTO {}
 
 /// Struct for friend requests
 #[derive(Clone, RustcEncodable, RustcDecodable)]
-pub struct FriendRequestDTO {
+pub struct PendingFriendRequestDTO {
     /// Connection ID.
     pub connection_id: u64,
     /// Origin user.
@@ -324,7 +343,7 @@ pub struct FriendRequestDTO {
     pub message: Option<String>,
 }
 
-impl DTO for FriendRequestDTO {}
+impl DTO for PendingFriendRequestDTO {}
 
 /// Struct for signup verification
 #[derive(Clone, RustcEncodable, RustcDecodable)]
