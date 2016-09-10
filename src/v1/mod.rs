@@ -10,6 +10,7 @@ pub mod transactions;
 pub use oauth::*;
 pub use public::*;
 pub use user::*;
+pub use otp::*;
 pub use friends::*;
 pub use transactions::*;
 
