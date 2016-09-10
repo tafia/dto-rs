@@ -238,7 +238,7 @@ impl DTO for ClientInfoDTO {}
 
 /// Struct to a confirm pending connection
 #[derive(Clone, RustcEncodable, RustcDecodable)]
-pub struct ConfirmPendingConnectionDTO {
+pub struct ConfirmFriendRequestDTO {
     /// The id of the connection
     pub id: u64,
     /// Where the connection originated
@@ -247,7 +247,7 @@ pub struct ConfirmPendingConnectionDTO {
     pub destination: u64,
 }
 
-impl DTO for ConfirmPendingConnectionDTO {}
+impl DTO for ConfirmFriendRequestDTO {}
 
 /// Struct to reset the users password
 #[derive(Clone, RustcEncodable, RustcDecodable)]
@@ -266,7 +266,7 @@ pub struct AuthenticationCodeDTO {
     /// The 6 digit authentication code
     pub code: u32,
     /// The timestamp of when the code was sent
-    pub timestamp: UTC,
+    pub timestamp: DateTime<UTC>,
 }
 
 impl DTO for AuthenticationCodeDTO {}
