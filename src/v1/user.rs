@@ -61,7 +61,7 @@ pub struct UserDTO {
     /// Whether the users account id disabled
     pub enabled: bool,
     /// When the user registered
-    pub registration_date: DateTime<UTC>,
+    pub registration_time: DateTime<UTC>,
     /// The users last activity time
     pub last_activity: DateTime<UTC>,
     /// Whether the user is banned and until when
