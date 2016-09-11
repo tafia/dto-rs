@@ -82,7 +82,7 @@ pub struct ProfileDTO {
     /// Last name of the user.
     pub last_name: Option<String>,
     /// Link to the user's profile image.
-    pub image: Option<String>,
+    pub image_url: Option<String>,
     /// Age of the user.
     pub age: Option<u8>,
     /// Address of the user.
