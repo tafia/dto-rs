@@ -21,13 +21,13 @@ pub struct UserDTO {
     /// / Whether the email has been confirmed or not
     pub email_confirmed: bool,
     /// The users first name
-    pub first: Option<String>,
+    pub first_name: Option<String>,
     /// Whether the first name has been confirmed or not
-    pub first_confirmed: bool,
+    pub first_name_confirmed: bool,
     /// The users last name
-    pub last: Option<String>,
+    pub last_name: Option<String>,
     /// Whether the last name has been confirmed
-    pub last_confirmed: bool,
+    pub last_name_confirmed: bool,
     /// The amount of devices the user has
     pub device_count: u8,
     /// The users wallet addresses
@@ -49,7 +49,7 @@ pub struct UserDTO {
     /// Whether the users phone # has been confirmed
     pub phone_confirmed: bool,
     /// The users profile picture
-    pub image: Option<String>,
+    pub image_url: Option<String>,
     /// The users address
     pub address: Option<Address>,
     /// Whether the address has been confirmed
