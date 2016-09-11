@@ -64,6 +64,8 @@ impl fmt::Display for ScopeDTO {
     }
 }
 
+impl DTO for ScopeDTO {}
+
 /// Struct for creating a fractal developer
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct CreateClientDTO {
