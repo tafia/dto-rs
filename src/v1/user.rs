@@ -11,7 +11,7 @@ use DTO;
 #[derive(RustcEncodable, RustcDecodable)]
 pub struct UserDTO {
     /// The unique ID of the user
-    pub id: u64,
+    pub user_id: u64,
     /// The unique username of the user
     pub username: String,
     /// The display name of the user
@@ -61,7 +61,7 @@ pub struct UserDTO {
     /// Whether the users account id disabled
     pub enabled: bool,
     /// When the user registered
-    pub registered: DateTime<UTC>,
+    pub registration_date: DateTime<UTC>,
     /// The users last activity time
     pub last_activity: DateTime<UTC>,
     /// Whether the user is banned and until when

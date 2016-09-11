@@ -53,7 +53,7 @@ impl DTO for PendingFriendRequestDTO {}
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct ConfirmFriendRequestDTO {
     /// The id of the connection
-    pub id: u64,
+    pub request_id: u64,
     /// Where the connection originated
     pub origin: u64,
     /// The user confirming the connection
