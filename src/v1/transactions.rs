@@ -3,7 +3,7 @@
 use chrono::{DateTime, UTC};
 use utils::{WalletAddress, Amount};
 
-use DTO;
+use {DTO, ProfileDTO};
 
 /// Struct used to generate a transaction.
 #[derive(Clone, RustcEncodable, RustcDecodable)]
@@ -24,11 +24,11 @@ impl DTO for GenerateTransactionDTO {}
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct TransactionDTO {
     /// The id of the transaction.
-    pub id: u64,
+    pub transaction_id: u64,
     /// The origin of the transaction.
-    pub origin_user: u64,
+    pub origin_user: ProfileDTO,
     /// The destination of the transaction.
-    pub destination_user: u64,
+    pub destination_user: ProfileDTO,
     /// The destination address of the transaction.
     pub destination_address: WalletAddress,
     /// The amount of the transaction.
