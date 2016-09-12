@@ -127,7 +127,7 @@ pub struct SearchUserDTO {
     pub username: Option<String>,
     pub email: Option<String>,
     pub first_name: Option<String>,
-    pub last_name: Option<String>
+    pub last_name: Option<String>,
     pub age: Option<u8>,
     pub country: Option<String>,
     pub state: Option<String>,
