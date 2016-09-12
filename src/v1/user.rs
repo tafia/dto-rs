@@ -119,3 +119,20 @@ pub struct UpdateUserDTO {
 }
 
 impl DTO for UpdateUserDTO {}
+
+/// Struct used to update user information
+#[derive(Clone, RustcEncodable, RustcDecodable)]
+pub struct SearchUserDTO {
+    pub user_email: Option<String>,
+    pub username: Option<String>,
+    pub email: Option<String>,
+    pub first_name: Option<String>,
+    pub last_name: Option<String>
+    pub age: Option<u8>,
+    pub country: Option<String>,
+    pub state: Option<String>,
+    pub city: Option<String>,
+    pub phone: Option<String>,
+}
+
+impl DTO for SearchUserDTO {}
