@@ -143,6 +143,8 @@ pub struct SearchUserDTO {
     pub city: Option<String>,
     /// Phone of the user.
     pub phone: Option<String>,
+    /// Check for all or any?
+    pub all: bool,
 }
 
 impl DTO for SearchUserDTO {}
