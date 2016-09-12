@@ -123,6 +123,8 @@ impl DTO for UpdateUserDTO {}
 /// Struct used to search a user.
 #[derive(Clone, RustcEncodable, RustcDecodable)]
 pub struct SearchUserDTO {
+    /// Random data.
+    pub random: Option<String>,
     /// Username or email.
     pub user_email: Option<String>,
     /// Username.
