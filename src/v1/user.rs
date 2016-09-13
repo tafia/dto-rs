@@ -125,8 +125,6 @@ impl DTO for UpdateUserDTO {}
 pub struct SearchUserDTO {
     /// Random data.
     pub random: Option<String>,
-    /// Username or email.
-    pub user_email: Option<String>,
     /// Username.
     pub username: Option<String>,
     /// Email of the user.
