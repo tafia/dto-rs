@@ -47,3 +47,14 @@ pub struct PendingTransactionDTO {
 }
 
 impl DTO for PendingTransactionDTO {}
+
+/// Struct for Authenticating transactions.
+#[derive(Clone, RustcEncodable, RustcDecodable)]
+pub struct AuthenticateTransactionDTO {
+    /// The pending transaction key.
+    pub key: String,
+    /// The 6 digit 2 factor authentication code.
+    pub code: u32,
+}
+
+impl DTO for AuthenticateTransactionDTO {}
