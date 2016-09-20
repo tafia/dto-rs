@@ -145,6 +145,10 @@ pub struct SearchUserDTO {
     pub phone: Option<String>,
     /// Check for all or any?
     pub all: bool,
+    /// Include the current user, if logged in.
+    pub include_me: bool,
+    /// Include friends of the current user, if logged in.
+    pub include_friends: bool,
 }
 
 impl DTO for SearchUserDTO {}
