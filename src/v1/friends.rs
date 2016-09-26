@@ -43,6 +43,8 @@ pub struct PendingFriendRequestDTO {
     pub connection_id: u64,
     /// Origin user.
     pub origin_user: ProfileDTO,
+    /// Destination user.
+    pub destination_user: ProfileDTO,
     /// Message.
     pub message: Option<String>,
 }
