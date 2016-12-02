@@ -91,7 +91,7 @@ pub struct ClientInfoDTO {
     /// The scopes of the client
     pub scopes: Vec<ScopeDTO>,
     /// The request limit of the client
-    pub request_limit: usize,
+    pub request_limit: Option<usize>,
 }
 
 impl DTO for ClientInfoDTO {}
