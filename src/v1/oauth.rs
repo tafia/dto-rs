@@ -74,7 +74,7 @@ pub struct CreateClientDTO {
     /// The permissions the client has
     pub scopes: Vec<ScopeDTO>,
     /// Number of requests per hour that the client will be able to do
-    pub request_limit: usize,
+    pub request_limit: Option<usize>,
 }
 
 impl DTO for CreateClientDTO {}
