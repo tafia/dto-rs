@@ -1,6 +1,6 @@
 [package]
 name = "fractal-dto"
-version = "0.6.1"
+version = "0.6.2"
 authors = [
     "Eric Remigino <eric@fractal.global>",
     "Iban Eguia <iban@fractal.global>",
@@ -8,7 +8,7 @@ authors = [
 license = "MIT/Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/FractalGlobal/dto-rs"
-documentation = "http://fractal.global/dto-rs"
+documentation = "https://docs.rs/fractal-dto/"
 description = """
 DTO objects to transfer information in the Fractal Global Credits API.
 """
