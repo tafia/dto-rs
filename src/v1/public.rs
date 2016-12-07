@@ -11,6 +11,8 @@ pub struct RegisterDTO {
     pub password: String,
     /// The users email
     pub email: String,
+    /// Posible referer
+    pub referer: Option<String>,
 }
 
 impl DTO for RegisterDTO {}
