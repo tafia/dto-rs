@@ -4,7 +4,7 @@ use std::fmt;
 
 use DTO;
 
-/// AccessToken Data type object
+/// `AccessToken` Data type object
 #[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
 pub struct AccessTokenDTO {
     /// The app id
