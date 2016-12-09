@@ -1,6 +1,6 @@
 //! Users module.
 
-use std::collections::{HashMap, BTreeSet};
+use std::collections::BTreeSet;
 
 use chrono::{NaiveDate, DateTime, UTC};
 use utils::{Address, WalletAddress, Amount};
@@ -38,8 +38,6 @@ pub struct UserDTO {
     pub checking_balance: Amount,
     /// The users cold balance
     pub cold_balance: Amount,
-    /// The users bonds and when he purchased them
-    pub bonds: HashMap<DateTime<UTC>, u64>,
     /// The users birthday
     pub birthday: Option<NaiveDate>,
     /// Whether the birthday has been confirmed
