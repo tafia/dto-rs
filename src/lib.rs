@@ -17,11 +17,11 @@
     unused_comparisons, unused_features, unused_parens, while_true)]
 #![warn(trivial_casts, trivial_numeric_casts, unused, unused_extern_crates, unused_import_braces,
     unused_qualifications, unused_results, variant_size_differences)]
-extern crate rustc_serialize;
 extern crate chrono;
 extern crate fractal_utils as utils;
 
-use rustc_serialize::{Encodable, Decodable};
+#[macro_use]
+extern crate serde_derive;
 
 pub mod error;
 pub use error::FromDTOError;
@@ -29,11 +29,11 @@ pub use error::FromDTOError;
 pub mod v1;
 pub use v1::*;
 
-/// The dto trate to make it Encodeable and Decodable into fractal objects
-pub trait DTO: Encodable + Decodable {}
-
-/// creates an object from a dto
-pub trait FromDTO<D: DTO>: Sized {
-    /// the from dto wrapper
-    fn from_dto(dto: D) -> Result<Self, FromDTOError>;
-}
+// /// The dto trate to make it Encodeable and Decodable into fractal objects
+// pub trait DTO: Encodable + Decodable {}
+// 
+// /// creates an object from a dto
+// pub trait FromDTO<D: DTO>: Sized {
+//     /// the from dto wrapper
+//     fn from_dto(dto: D) -> Result<Self, FromDTOError>;
+// }

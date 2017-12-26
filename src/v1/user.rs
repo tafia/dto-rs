@@ -2,13 +2,14 @@
 
 use std::collections::BTreeSet;
 
-use chrono::{NaiveDate, DateTime, UTC};
-use utils::{Address, WalletAddress, Amount};
-
-use DTO;
+use chrono::{NaiveDate, DateTime};
+use chrono::offset::Utc;
+use utils::location::Address;
+use utils::amount::Amount;
+use utils::wallet_address::WalletAddress;
 
 /// The user date type object
-#[derive(RustcEncodable, RustcDecodable)]
+#[derive(Serialize, Deserialize)]
 pub struct UserDTO {
     /// The unique ID of the user
     pub user_id: u64,
@@ -59,17 +60,15 @@ pub struct UserDTO {
     /// Whether the users account id disabled
     pub enabled: bool,
     /// When the user registered
-    pub registration_time: DateTime<UTC>,
+    pub registration_time: DateTime<Utc>,
     /// The users last activity time
-    pub last_activity: DateTime<UTC>,
+    pub last_activity: DateTime<Utc>,
     /// Whether the user is banned and until when
-    pub banned: Option<DateTime<UTC>>,
+    pub banned: Option<DateTime<Utc>>,
 }
 
-impl DTO for UserDTO {}
-
 /// Struct for profiles
-#[derive(Debug, Clone, RustcEncodable, RustcDecodable)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ProfileDTO {
     /// User's ID.
     pub user_id: u64,
@@ -89,10 +88,8 @@ pub struct ProfileDTO {
     pub trust_score: i8,
 }
 
-impl DTO for ProfileDTO {}
-
 /// Struct used to update user information
-#[derive(Clone, RustcEncodable, RustcDecodable)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct UpdateUserDTO {
     /// The users new username
     pub new_username: Option<String>,
@@ -116,10 +113,8 @@ pub struct UpdateUserDTO {
     pub new_image: Option<String>,
 }
 
-impl DTO for UpdateUserDTO {}
-
 /// Struct used to search a user.
-#[derive(Clone, RustcEncodable, RustcDecodable)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct SearchUserDTO {
     /// Random data.
     pub random: Option<String>,
@@ -148,5 +143,3 @@ pub struct SearchUserDTO {
     /// Include friends of the current user, if logged in.
     pub include_friends: bool,
 }
-
-impl DTO for SearchUserDTO {}

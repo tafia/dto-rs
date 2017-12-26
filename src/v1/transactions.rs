@@ -1,12 +1,13 @@
 //! Transaction module.
 
-use chrono::{DateTime, UTC};
-use utils::{WalletAddress, Amount};
-
-use {DTO, ProfileDTO};
+use chrono::DateTime;
+use chrono::offset::Utc;
+use utils::amount::Amount;
+use utils::wallet_address::WalletAddress;
+use user::ProfileDTO;
 
 /// Struct used to generate a transaction.
-#[derive(Clone, RustcEncodable, RustcDecodable)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct GenerateTransactionDTO {
     /// Where the transaction originated.
     pub origin_id: u64,
@@ -18,10 +19,8 @@ pub struct GenerateTransactionDTO {
     pub amount: Amount,
 }
 
-impl DTO for GenerateTransactionDTO {}
-
 /// Struct for tansactions.
-#[derive(Clone, RustcEncodable, RustcDecodable)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct TransactionDTO {
     /// The id of the transaction.
     pub transaction_id: u64,
@@ -34,16 +33,12 @@ pub struct TransactionDTO {
     /// The amount of the transaction.
     pub amount: Amount,
     /// The timestamp of the transaction.
-    pub timestamp: DateTime<UTC>,
+    pub timestamp: DateTime<Utc>,
 }
 
-impl DTO for TransactionDTO {}
-
 /// Struct for pending transactions.
-#[derive(Clone, RustcEncodable, RustcDecodable)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct PendingTransactionDTO {
     /// The pending transaction code.
     pub code: String,
 }
-
-impl DTO for PendingTransactionDTO {}

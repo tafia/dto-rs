@@ -1,13 +1,12 @@
 //! Friends module.
 
-use DTO;
 use super::user::ProfileDTO;
 
 /// Enum representing the relationship between two friends.
 pub type Relationship = RelationshipDTO;
 
 /// Struct for a fractal connection
-#[derive(Clone, RustcEncodable, RustcDecodable)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct FriendRequestDTO {
     /// Where the connection originated.
     pub origin_id: u64,
@@ -19,10 +18,8 @@ pub struct FriendRequestDTO {
     pub relationship: RelationshipDTO,
 }
 
-impl DTO for FriendRequestDTO {}
-
 /// Enum representing the relationship between two friends.
-#[derive(Clone, Debug, RustcEncodable, RustcDecodable, PartialEq, Copy)]
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RelationshipDTO {
     /// A stranger to the user
     Stranger,
@@ -37,7 +34,7 @@ pub enum RelationshipDTO {
 }
 
 /// Struct for friend requests
-#[derive(Clone, RustcEncodable, RustcDecodable)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct PendingFriendRequestDTO {
     /// Connection ID.
     pub connection_id: u64,
@@ -49,10 +46,8 @@ pub struct PendingFriendRequestDTO {
     pub message: Option<String>,
 }
 
-impl DTO for PendingFriendRequestDTO {}
-
 /// Struct to a confirm pending connection
-#[derive(Clone, RustcEncodable, RustcDecodable)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct ConfirmFriendRequestDTO {
     /// The id of the connection
     pub request_id: u64,
@@ -61,5 +56,3 @@ pub struct ConfirmFriendRequestDTO {
     /// The user confirming the connection
     pub destination: u64,
 }
-
-impl DTO for ConfirmFriendRequestDTO {}

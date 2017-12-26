@@ -2,10 +2,8 @@
 
 use std::fmt;
 
-use DTO;
-
 /// `AccessToken` Data type object
-#[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct AccessTokenDTO {
     /// The app id
     pub app_id: String,
@@ -19,12 +17,10 @@ pub struct AccessTokenDTO {
     pub expiration: i64,
 }
 
-impl DTO for AccessTokenDTO {}
-
 /// Enum representing token type.
 ///
 /// Currently only using bearer.
-#[derive(Debug, Clone, RustcDecodable, RustcEncodable, PartialEq, Eq, Copy)]
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Eq, Copy)]
 pub enum TokenTypeDTO {
     /// OAuth Bearer token type
     Bearer,
@@ -36,10 +32,8 @@ impl fmt::Display for TokenTypeDTO {
     }
 }
 
-impl DTO for TokenTypeDTO {}
-
 /// Enum that represents a scope.
-#[derive(Debug, Clone, RustcDecodable, RustcEncodable, PartialEq, Eq, Copy)]
+#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Eq, Copy)]
 pub enum ScopeDTO {
     /// Administration scope
     ///
@@ -64,10 +58,8 @@ impl fmt::Display for ScopeDTO {
     }
 }
 
-impl DTO for ScopeDTO {}
-
 /// Struct for creating a fractal developer
-#[derive(Clone, RustcEncodable, RustcDecodable)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct CreateClientDTO {
     /// The name of the client
     pub name: String,
@@ -77,10 +69,8 @@ pub struct CreateClientDTO {
     pub request_limit: Option<usize>,
 }
 
-impl DTO for CreateClientDTO {}
-
 /// Struct with the developer client information
-#[derive(Clone, RustcEncodable, RustcDecodable)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct ClientInfoDTO {
     /// The ID of the client
     pub id: String,
@@ -93,5 +83,3 @@ pub struct ClientInfoDTO {
     /// The request limit of the client
     pub request_limit: Option<usize>,
 }
-
-impl DTO for ClientInfoDTO {}

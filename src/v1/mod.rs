@@ -14,10 +14,8 @@ pub use otp::*;
 pub use friends::*;
 pub use transactions::*;
 
-use DTO;
-
 /// Response Data Transfer Object
-#[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct ResponseDTO {
     /// The message
     pub message: String,
@@ -33,16 +31,3 @@ impl ResponseDTO {
         self.message = String::from(message.as_ref());
     }
 }
-
-impl DTO for ResponseDTO {}
-
-// /// Holds both public and signing keys encoded in base64
-// #[derive(RustcEncodable, RustcDecodable)]
-// pub struct PublicKeysDTO {
-//     /// the public ntrumls key in base 64
-//     pub public_sign_key: String,
-//     /// the public ntru key in base 64
-//     pub public_encrypt_key: String,
-// }
-//
-// impl DTO for PublicKeysDTO {}
