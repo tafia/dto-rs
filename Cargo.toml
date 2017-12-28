@@ -16,6 +16,7 @@ keywords = ["fractal", "global", "credits", "dto"]
 
 [dependencies]
 chrono = { version = "0.4.0", features = ["serde"]}
-fractal-utils = { version = "0.3.4", path = "../utils-rs" }
+fractal-utils = { git = "https://github.com/tafia/utils-rs", branch = "v0.3.x" }
+#fractal-utils = { version = "0.3.4", path = "../utils-rs" }
 serde = "1.0.25"
 serde_derive = "1.0.25"
